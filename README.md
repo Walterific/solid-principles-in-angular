@@ -170,9 +170,84 @@ The component only needs to retrieve items from the service, so it should only d
 
 ![image](https://github.com/user-attachments/assets/4a10fe7f-cb65-4c36-8793-def1c6e4e1c9)
 
+The component is depending on the DataService interface, which includes methods that are not used by the component. This can lead to unnecessary coupling and performance issues.
 
+To fix this, we can create a new interface that only includes the getItems method and have the service implement this interface. The component can then depend on this new interface instead of the original DataService interface.
 
+![image](https://github.com/user-attachments/assets/3421b553-0293-4b87-84d4-a233a88b4864)
 
+Now, the component only depends on the ItemsService interface, which includes only the getItems method. This helps to reduce coupling and improves performance.
+
+The Interface Segregation Principle (ISP) is an important software development principle that helps to reduce coupling between components and makes code more modular, flexible, and maintainable. Violating ISP can lead to unnecessary coupling and performance issues. To fix this, we can create new interfaces that include only the methods needed by a component and have services implement these interfaces instead of larger interfaces. This can help to improve code quality, reduce coupling, and improve performance.
+
+Real-World Example: Document Management System
+
+You have an IDocument interface that has methods like print(), fax(), and scan(). If you implement this interface in a DigitalDocument class, but digital documents don’t need fax() or scan() methods, it violates ISP.
+
+Solution: Split the interface into smaller, more specific ones like IPrintable, IFaxable, and IScannable. Now, each class only implements what it needs.
+
+Application: ISP prevents forcing classes to implement methods they don’t need, making the code cleaner and easier to maintain.
+
+#
+
+### Dependency Inversion Principle (DIP)
+
+Dependency Inversion Principle (DIP) is an important principle of object-oriented design. It suggests that high-level modules should not depend on low-level modules, but both should depend on abstractions. The abstractions should not depend on the details, but the details should depend on the abstractions. This principle promotes loose coupling and high cohesion in software systems.
+
+### Violation of DIP
+
+Let’s consider an example where we have a CustomerService that depends on a CustomerRepository to fetch customer data. The implementation of CustomerService looks like this:
+
+![image](https://github.com/user-attachments/assets/691d3cb0-08e7-453a-b401-7aa69b6b443a)
+
+The implementation of CustomerRepository looks like this:
+
+![image](https://github.com/user-attachments/assets/d5634043-de2e-4829-acab-386c4e73baf7)
+
+The CustomerService class depends on the CustomerRepository class, which violates the Dependency Inversion Principle. The CustomerService class is a high-level module, and the CustomerRepository class is a low-level module. The CustomerService class should not depend on the CustomerRepository class directly.
+
+### Fixing Violation of DIP
+
+To fix the violation of the Dependency Inversion Principle, we need to introduce an abstraction between the CustomerService class and the CustomerRepository class. We can introduce an interface ICustomerRepository to define the contract that the CustomerRepository class should implement. The implementation of CustomerService looks like this:
+
+![image](https://github.com/user-attachments/assets/86023f0b-fe4d-4814-857f-e1f4842ae1e1)
+
+The implementation of ICustomerRepository looks like this:
+
+![image](https://github.com/user-attachments/assets/b4d886e9-c668-41d6-8a52-12b936129b84)
+
+The implementation of CustomerRepository now implements the ICustomerRepository interface.
+
+![image](https://github.com/user-attachments/assets/7beec8a3-2810-4b5f-915b-6f02ec46c393)
+
+Now, the CustomerService class depends on the ICustomerRepository interface, and the CustomerRepository class implements the ICustomerRepository interface. This way, the CustomerService class is decoupled from the CustomerRepository class, and both depend on the abstraction.
+
+Real-World Example: Notification Service
+
+Suppose you have a User class that sends notifications through a EmailNotification service. If you later want to support SMS or push notifications, you'd have to modify the User class.
+
+Violation: The User class is tightly coupled with the EmailNotification class, violating DIP.
+
+Solution: Create an abstraction, like INotificationService, and have EmailNotification, SmsNotification, and PushNotification implement it. Now the User class depends on the abstraction, not the concrete implementation.
+
+Application: DIP reduces coupling between classes, making the system more flexible and easier to extend with new types of notifications.
+
+#
+
+### Conclusion
+
+SOLID principles help software developers design software systems to be more flexible, maintainable, and scalable. They promote code that is easy to understand, modify, and extend.
+
+Each principle in SOLID (Single Responsibility, Open-Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion) has its own benefits and addresses specific concerns that can arise in software development. When combined, they form a powerful framework for designing high-quality software.
+
+By following these principles, software developers can create software systems that are easier to test, debug, and refactor. They can also avoid common design problems, such as tight coupling, code duplication, and the creation of complex and hard-to-understand code.
+
+Overall, SOLID principles are an important part of modern software development. While they may require more time and effort to implement initially, they can save significant time and resources in the long run, leading to better code quality and a more successful software project.
+
+#
+
+### References:
+https://sheldonrcohen.medium.com/applying-solid-principles-to-angular-with-examples-fec460ffa541
 
 
 
