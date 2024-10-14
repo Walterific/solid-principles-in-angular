@@ -126,6 +126,50 @@ Application: The PaymentProcessor class remains open for extension (adding new p
 
 #
 
+### Liskov Substitution Principle (LSP)
+
+The Liskov Substitution Principle (LSP) is a fundamental concept in software engineering that is essential for designing and implementing maintainable and extensible systems. LSP states that objects of a superclass should be replaceable with objects of its subclasses without affecting the correctness of the program. Violating the LSP can lead to unexpected behavior and bugs.
+
+### Violating LSP
+
+![image](https://github.com/user-attachments/assets/f9784c6e-0651-49f6-a782-4ff0fb00d410)
+
+In this example, Ostrich is a subclass of Animal that overrides the move() method to reflect the fact that ostriches cannot fly. However, when we pass an instance of Ostrich to the moveAnimal() function, we get unexpected behavior because the move() method of Ostrich does not behave the same way as the move() method of Animal. This violates the LSP because Ostrich is not a true substitute for Animal.
+
+To fix the violation, we can modify the Ostrich class to behave more like Animal:
+
+![image](https://github.com/user-attachments/assets/9690ded8-964a-4966-9f07-9cbf4a4b8e8d)
+
+In this updated implementation, we have added a fly() method to the Ostrich class that throws an error because ostriches cannot fly. This ensures that Ostrich behaves like Animal and can be used as a substitute for it without affecting the correctness of the program.
+
+The Liskov Substitution Principle is an important principle in software engineering that helps us design maintainable and extensible systems. Violating the LSP can lead to unexpected behavior and bugs, but these violations can be fixed by ensuring that subclasses behave like their superclasses.
+
+Real-World Example: User Authentication System
+
+You have a User class for normal users and an AdminUser class for administrators. If you replace a User object with an AdminUser object, the system should still function correctly without changing the behavior.
+
+Violation: If AdminUser has extra methods (e.g., deleteUser()) that are not applicable to normal User objects, it violates LSP.
+
+Solution: Ensure that both User and AdminUser conform to the same interface (e.g., IUser) and only add additional methods where necessary. The base class functionality should be consistent across subclasses.
+
+Application: LSP ensures that derived classes can replace base classes without altering the expected behavior, improving code reliability.
+
+#
+
+### Interface Segregation Principle (ISP)
+
+The Interface Segregation Principle (ISP) is a software development principle that states that a software component should not be forced to depend on interfaces that it does not use. In other words, clients should not be forced to depend on methods they do not use. This principle helps to reduce coupling between components and makes code more modular, flexible, and maintainable.
+
+ISP can be violated when a component has a dependency on a service that provides more methods than the component needs. This can lead to unnecessary coupling between the component and the service, making it difficult to modify either component without affecting the other. Additionally, it can cause performance issues as the component may be forced to load unnecessary methods from the service.
+
+To demonstrate this, let’s consider an example where a component needs to retrieve data from a service. The service provides several methods, including ones that are not required by the component.
+
+![image](https://github.com/user-attachments/assets/365dea48-2666-4b2c-9a95-170e0080f4c9)
+
+The component only needs to retrieve items from the service, so it should only depend on the getItems method. However, if the component is written as follows:
+
+![image](https://github.com/user-attachments/assets/4a10fe7f-cb65-4c36-8793-def1c6e4e1c9)
+
 
 
 
