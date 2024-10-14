@@ -2,7 +2,7 @@
 
 ---
 
-# SOLID Principles in Angular
+## SOLID Principles in Angular
 ### What is SOLID means in Angular?
 
 ---
