@@ -29,5 +29,22 @@ Consider a component that displays a list of products and allows the user to fil
 
 ![image](https://github.com/user-attachments/assets/32dde38d-94ce-46ca-a138-0667028a0fc1)
 
+This component violates the SRP because it has two responsibilities: displaying the list of products and filtering them by category. This violates the “one reason to change” principle, as changes to the filtering behavior may affect the component’s rendering logic and vice versa.
+
+To fix this violation, we can refactor the component into two separate components, each with its own responsibility.
+
+## Fixing the Violation
+First, we’ll create a new component that displays the list of products:
+
+![image](https://github.com/user-attachments/assets/15b4626c-cbca-40ee-9835-a58e5750f8f7)
+
+This component is now responsible only for displaying the list of products. We’ve removed the category filtering logic to a new component.
+
+Next, we’ll create a new component that handles the category filtering:
+
+![image](https://github.com/user-attachments/assets/c37c7791-2d27-4efe-99fd-d5f318ba046c)
+
+
+
 
 
