@@ -21,7 +21,9 @@ D: Dependency Inversion Principle
 
 In this article, we will delve into each of these principles and examine how they can enhance code organization, promote reusability, and ensure easier maintenance within Angular applications.
 
-## Single Responsibility Principle (SRP)
+#
+
+### Single Responsibility Principle (SRP)
 The Single Responsibility Principle (SRP) is a fundamental principle of software engineering which states that a class or module should have only one reason to change. In other words, it should have only one responsibility. Violating this principle can lead to code that is difficult to maintain and understand.
 
 ### Violation of SRP
