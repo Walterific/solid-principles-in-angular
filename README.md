@@ -18,7 +18,7 @@ I: Interface Segregation Principle
 
 D: Dependency Inversion Principle
 
----
+___
 
 In this article, we will delve into each of these principles and examine how they can enhance code organization, promote reusability, and ensure easier maintenance within Angular applications.
 
